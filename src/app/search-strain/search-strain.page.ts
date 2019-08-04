@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ModalController} from '@ionic/angular';
+import {StrainDataService} from './strain-data.service';
 
 @Component({
     selector: 'app-search-strain',
@@ -7,8 +8,12 @@ import {ModalController} from '@ionic/angular';
     styleUrls: ['./search-strain.page.scss'],
 })
 export class SearchStrainPage implements OnInit {
+    public searchTerm = '';
+    public items: any;
 
-    constructor(public modalController: ModalController) {
+    constructor(
+        public modalController: ModalController,
+        private strainDataService: StrainDataService) {
     }
 
     dismiss() {
@@ -17,6 +22,10 @@ export class SearchStrainPage implements OnInit {
         this.modalController.dismiss({
             dismissed: true
         });
+    }
+
+    search(searchTerm) {
+        this.items = this.strainDataService.searchStrains(searchTerm);
     }
 
     ngOnInit() {

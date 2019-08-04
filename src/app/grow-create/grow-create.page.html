@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Start a new grow</ion-title>
+  <ion-toolbar color="light">
+    <ion-title>Add grow log</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,14 +10,21 @@
 
     <ion-item>
       <ion-label position="floating">Grow Name</ion-label>
-      <ion-input></ion-input>
+      <ion-input [(ngModel)]="newItem.name"></ion-input>
     </ion-item>
 
-    <ion-button (click)="presentModal()">Search strain</ion-button>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Take a pic</ion-card-title>
+      </ion-card-header>
+      <img src="https://ionicframework.com/docs/demos/api/card/madison.jpg" />
+    </ion-card>
+
+    <ion-button expand="block" fill="outline" (click)="presentModal()">Find your strain</ion-button>
 
     <ion-item>
       <ion-label>Environment</ion-label>
-      <ion-select placeholder="Select One">
+      <ion-select placeholder="Select One" [(ngModel)]="newItem.environment">
         <ion-select-option value="indoor">Indoor</ion-select-option>
         <ion-select-option value="outdoor">Outdoor</ion-select-option>
       </ion-select>
@@ -25,21 +32,14 @@
 
     <ion-item>
       <ion-label>Medium</ion-label>
-      <ion-select placeholder="Select One">
-        <ion-select-option value="indoor">Soil</ion-select-option>
-        <ion-select-option value="outdoor">Hydroponic</ion-select-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Stage</ion-label>
-      <ion-select placeholder="Select One">
-        <ion-select-option value="seed">Seed</ion-select-option>
-        <ion-select-option value="veg">Vegetative</ion-select-option>
-        <ion-select-option value="flower">Flowering</ion-select-option>
+      <ion-select placeholder="Select One" [(ngModel)]="newItem.medium">
+        <ion-select-option value="soil">Soil</ion-select-option>
+        <ion-select-option value="hydro">Hydroponic</ion-select-option>
       </ion-select>
     </ion-item>
 
   </ion-list>
+
+  <ion-button expand="block" fill="outline" (click)="addItem(newItem)">Done</ion-button>
 
 </ion-content>

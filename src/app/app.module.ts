@@ -15,6 +15,7 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {SearchStrainPage} from './search-strain/search-strain.page';
 import {SearchStrainPageModule} from './search-strain/search-strain.module';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
     declarations: [AppComponent],
@@ -24,6 +25,7 @@ import {SearchStrainPageModule} from './search-strain/search-strain.module';
     imports: [
         BrowserModule,
         IonicModule.forRoot(),
+        HttpClientModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule, // imports firebase/firestore, only needed for database features
         AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
