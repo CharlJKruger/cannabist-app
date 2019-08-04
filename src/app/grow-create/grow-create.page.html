@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Start a new grow</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label position="floating">Grow Name</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+
+    <ion-button (click)="presentModal()">Search strain</ion-button>
+
+    <ion-item>
+      <ion-label>Environment</ion-label>
+      <ion-select placeholder="Select One">
+        <ion-select-option value="indoor">Indoor</ion-select-option>
+        <ion-select-option value="outdoor">Outdoor</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Medium</ion-label>
+      <ion-select placeholder="Select One">
+        <ion-select-option value="indoor">Soil</ion-select-option>
+        <ion-select-option value="outdoor">Hydroponic</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Stage</ion-label>
+      <ion-select placeholder="Select One">
+        <ion-select-option value="seed">Seed</ion-select-option>
+        <ion-select-option value="veg">Vegetative</ion-select-option>
+        <ion-select-option value="flower">Flowering</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

@@ -5,7 +5,9 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  }
+  },
+  { path: 'grow-create', loadChildren: './grow-create/grow-create.module#GrowCreatePageModule' },
+  { path: 'search-strain', loadChildren: './search-strain/search-strain.module#SearchStrainPageModule' }
 ];
 @NgModule({
   imports: [
