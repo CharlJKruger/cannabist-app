@@ -1,20 +1,29 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Find your strain</ion-title>
-    <ion-buttons slot="end">
-      <ion-button fill="clear" (click)="dismiss()">Close</ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Find your strain</ion-title>
+        <ion-buttons slot="end">
+            <ion-button fill="clear" (click)="dismiss()">Close</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-searchbar [(ngModel)]="searchTerm" (ngModelChange)="search(searchTerm)"></ion-searchbar>
+    <ion-searchbar [(ngModel)]="searchTerm" (ngModelChange)="search(searchTerm)" placeholder="Search (3 or more characters)"></ion-searchbar>
 
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-label>{{item.title}}</ion-label>
-    </ion-item>
-  </ion-list>
+    <ion-list>
+
+        <ion-item *ngFor="let strain of strains" (click)="addStrain(strain)">
+            <ion-avatar slot="start">
+                <img src="{{strain['image-1']}}">
+            </ion-avatar>
+            <ion-label>
+                <h2>{{strain.name}}</h2>
+                <h3>{{strain.breeder}}</h3>
+                <p>{{strain.genetics}}</p>
+            </ion-label>
+        </ion-item>
+
+    </ion-list>
 
 </ion-content>

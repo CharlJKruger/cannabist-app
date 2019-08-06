@@ -3,6 +3,7 @@ import {ModalController} from '@ionic/angular';
 import {SearchStrainPage} from '../search-strain/search-strain.page';
 import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
 
 export interface Item {
     name: string;
@@ -29,7 +30,9 @@ export class GrowCreatePage implements OnInit {
 
     constructor(
         public modalController: ModalController,
-        private afs: AngularFirestore) {
+        private afs: AngularFirestore,
+        private router: Router
+    ) {
         this.itemsCollection = afs.collection<Item>('items');
         this.items = this.itemsCollection.valueChanges();
     }
@@ -42,7 +45,9 @@ export class GrowCreatePage implements OnInit {
     }
 
     addItem(item) {
-        this.itemsCollection.add(item);
+        this.itemsCollection.add(item).then(() => {
+            this.router.navigate(['/env-create']);
+        });
     }
 
     ngOnInit() {

@@ -1,28 +1,22 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+
+import strains from './strain-data.json';
 
 @Injectable({
     providedIn: 'root'
 })
 export class StrainDataService {
-    public items: any = [];
 
-    constructor(private http: HttpClient) {
-        this.items = [
-            {title: 'one'},
-            {title: 'two'},
-            {title: 'three'},
-            {title: 'four'},
-            {title: 'five'},
-            {title: 'six'}
-        ];
-
+    constructor() {
     }
 
     public searchStrains(searchTerm) {
-        return this.items.filter(item => {
-            console.log(item);
-            return item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
-        });
+        if (searchTerm.length >= 3) {
+            return strains.filter(item => {
+                return item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+            });
+        } else {
+            return;
+        }
     }
 }

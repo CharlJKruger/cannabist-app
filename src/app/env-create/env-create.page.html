@@ -1,0 +1,58 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Your grow setup</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-segment color="secondary">
+    <ion-segment-button layout="icon-end" checked>
+      <ion-label>Indoor</ion-label>
+      <ion-icon name="flashlight"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button layout="icon-end">
+      <ion-label>Outdoor</ion-label>
+      <ion-icon name="sunny"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-list>
+
+    <ion-list-header>
+      Light cycle
+    </ion-list-header>
+
+    <ion-item>
+      <ion-range min="0" max="24" step="1" pin="true" value="12">
+        <ion-icon size="small" slot="start" name="contrast"></ion-icon>
+        <ion-icon slot="end" name="sunny"></ion-icon>
+      </ion-range>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Grow light</ion-label>
+      <ion-select placeholder="Select One">
+        <ion-select-option value="led">LED</ion-select-option>
+        <ion-select-option value="hps">HPS</ion-select-option>
+        <ion-select-option value="mh">MH</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Wattage</ion-label>
+      <ion-input type="number"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+    indoor outdoor
+
+    light
+    led..
+
+    light cycle
+
+    width lenght height
+
+</ion-content>

@@ -1,6 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {ModalController} from '@ionic/angular';
 import {StrainDataService} from './strain-data.service';
+import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
+import {Observable} from 'rxjs';
+
+export interface Item {
+    name: string;
+}
 
 @Component({
     selector: 'app-search-strain',
@@ -8,12 +14,19 @@ import {StrainDataService} from './strain-data.service';
     styleUrls: ['./search-strain.page.scss'],
 })
 export class SearchStrainPage implements OnInit {
+    private itemsCollection: AngularFirestoreCollection<Item>;
+    items: Observable<Item[]>;
+
     public searchTerm = '';
-    public items: any;
+    public strains: any;
 
     constructor(
         public modalController: ModalController,
-        private strainDataService: StrainDataService) {
+        private strainDataService: StrainDataService,
+        private afs: AngularFirestore
+    ) {
+        this.itemsCollection = afs.collection<Item>('items/CNMckmX9s2NJzjAzh0Kp/strains');
+        this.items = this.itemsCollection.valueChanges();
     }
 
     dismiss() {
@@ -25,10 +38,13 @@ export class SearchStrainPage implements OnInit {
     }
 
     search(searchTerm) {
-        this.items = this.strainDataService.searchStrains(searchTerm);
+        this.strains = this.strainDataService.searchStrains(searchTerm);
     }
 
     ngOnInit() {
     }
 
+    addStrain(item: Item) {
+        this.itemsCollection.add(item);
+    }
 }
