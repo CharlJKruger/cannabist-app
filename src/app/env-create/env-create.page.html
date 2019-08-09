@@ -1,58 +1,76 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>Your grow setup</ion-title>
+        <ion-title>Your Setup</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-segment color="secondary">
-    <ion-segment-button layout="icon-end" checked>
+  <ion-segment color="success" [(ngModel)]="indoorOrOutdoor">
+    <ion-segment-button layout="icon-end" value="indoor">
       <ion-label>Indoor</ion-label>
       <ion-icon name="flashlight"></ion-icon>
     </ion-segment-button>
-    <ion-segment-button layout="icon-end">
+    <ion-segment-button layout="icon-end" value="outdoor">
       <ion-label>Outdoor</ion-label>
       <ion-icon name="sunny"></ion-icon>
     </ion-segment-button>
   </ion-segment>
 
-  <ion-list>
+  <div *ngIf="indoorOrOutdoor === 'indoor'">
 
-    <ion-list-header>
-      Light cycle
-    </ion-list-header>
+    <ion-list>
 
-    <ion-item>
-      <ion-range min="0" max="24" step="1" pin="true" value="12">
-        <ion-icon size="small" slot="start" name="contrast"></ion-icon>
-        <ion-icon slot="end" name="sunny"></ion-icon>
-      </ion-range>
-    </ion-item>
+      <ion-item-divider>
+        <ion-label>
+          LIGHT SETUP ({{lightCycle}} hours on, {{24 - lightCycle}} hours off)
+        </ion-label>
+      </ion-item-divider>
 
-    <ion-item>
-      <ion-label>Grow light</ion-label>
-      <ion-select placeholder="Select One">
-        <ion-select-option value="led">LED</ion-select-option>
-        <ion-select-option value="hps">HPS</ion-select-option>
-        <ion-select-option value="mh">MH</ion-select-option>
-      </ion-select>
-    </ion-item>
+      <ion-item>
+        <ion-range min="0" max="24" step="1" pin="true" [(ngModel)]="lightCycle">
+          <ion-icon size="small" slot="start" name="contrast"></ion-icon>
+          <ion-icon slot="end" name="sunny"></ion-icon>
+        </ion-range>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Wattage</ion-label>
-      <ion-input type="number"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label>Light type</ion-label>
+        <ion-select placeholder="Select One">
+          <ion-select-option value="led">LED</ion-select-option>
+          <ion-select-option value="hps">HPS</ion-select-option>
+          <ion-select-option value="mh">MH</ion-select-option>
+        </ion-select>
+      </ion-item>
 
-  </ion-list>
+      <ion-item>
+        <ion-label position="floating">Light wattage</ion-label>
+        <ion-input type="number"></ion-input>
+      </ion-item>
 
-    indoor outdoor
+      <ion-item-divider>
+        <ion-label>
+          GROW ROOM SPACE (Meters)
+        </ion-label>
+      </ion-item-divider>
 
-    light
-    led..
+      <ion-item>
+        <ion-label position="floating">Length</ion-label>
+        <ion-input type="number"></ion-input>
+      </ion-item>
 
-    light cycle
+      <ion-item>
+        <ion-label position="floating">Width</ion-label>
+        <ion-input type="number"></ion-input>
+      </ion-item>
 
-    width lenght height
+      <ion-item>
+        <ion-label position="floating">height</ion-label>
+        <ion-input type="number"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+  </div>
 
 </ion-content>

@@ -14,7 +14,7 @@
 
     <ion-list *ngIf="strains">
 
-        <ion-item *ngFor="let strain of strains.strains | keyvalue" (click)="addStrain(strain)">
+        <ion-item *ngFor="let strain of strains.strains | keyvalue" (click)="addStrain(strain.value)">
             <ion-avatar slot="start">
                 <img src="https://en.seedfinder.eu/pics/01seeds/{{strain.value.brid}}/{{strain.value.brid}}_-_{{strain.value.id}}_thumb.jpg">
             </ion-avatar>

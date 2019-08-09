@@ -1,5 +1,7 @@
 {
   "name": "cannabist-app",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
