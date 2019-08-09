@@ -8,6 +8,13 @@ export interface Item {
     name: string;
 }
 
+export interface StrainSearch {
+    error: boolean;
+    count: number;
+    strains: {};
+    info: string;
+}
+
 @Component({
     selector: 'app-search-strain',
     templateUrl: './search-strain.page.html',
@@ -18,7 +25,8 @@ export class SearchStrainPage implements OnInit {
     items: Observable<Item[]>;
 
     public searchTerm = '';
-    public strains: any;
+    strains;
+    objectKeys = Object.keys;
 
     constructor(
         public modalController: ModalController,
@@ -38,13 +46,21 @@ export class SearchStrainPage implements OnInit {
     }
 
     search(searchTerm) {
-        this.strains = this.strainDataService.searchStrains(searchTerm);
+        this.strainDataService.searchStrains(searchTerm).subscribe(
+            res => {
+                this.strains = res;
+            },
+            err => console.error(err),
+            () => console.log('done loading strains')
+        );
     }
 
     ngOnInit() {
     }
 
     addStrain(item: Item) {
-        this.itemsCollection.add(item);
+        this.itemsCollection.add(item).then(
+            () => this.dismiss()
+        );
     }
 }

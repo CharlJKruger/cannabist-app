@@ -13,23 +13,6 @@
       <ion-input [(ngModel)]="newItem.name"></ion-input>
     </ion-item>
 
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Take a pic</ion-card-title>
-      </ion-card-header>
-      <img src="https://ionicframework.com/docs/demos/api/card/madison.jpg" />
-    </ion-card>
-
-    <ion-button expand="block" fill="outline" (click)="presentModal()">Find your strain</ion-button>
-
-    <ion-item>
-      <ion-label>Environment</ion-label>
-      <ion-select placeholder="Select One" [(ngModel)]="newItem.environment">
-        <ion-select-option value="indoor">Indoor</ion-select-option>
-        <ion-select-option value="outdoor">Outdoor</ion-select-option>
-      </ion-select>
-    </ion-item>
-
     <ion-item>
       <ion-label>Medium</ion-label>
       <ion-select placeholder="Select One" [(ngModel)]="newItem.medium">
@@ -40,6 +23,36 @@
 
   </ion-list>
 
-  <ion-button expand="block" fill="outline" (click)="addItem(newItem)">Done</ion-button>
+  <ion-list>
+
+    <ion-item *ngFor="let strain of strains | async">
+      <ion-avatar slot="start">
+        <img src="{{strain['image-1']}}">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{strain.name}}</h2>
+        <h3>{{strain.breeder}}</h3>
+        <p>{{strain.genetics}}</p>
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
 
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button fill="outline" expand="block" (click)="presentModal()">Add strain</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button expand="block" (click)="addItem(newItem)">Next</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-toolbar>
+</ion-footer>

@@ -5,6 +5,8 @@ import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firest
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 
+export interface Strain { name: string; }
+
 export interface Item {
     name: string;
     strain: string;
@@ -23,10 +25,11 @@ export class GrowCreatePage implements OnInit {
     items: Observable<Item[]>;
     newItem = {
         name: '',
-        strain: 'string',
-        environment: 'indoor',
         medium: 'soil'
     };
+
+    private strainsCollection: AngularFirestoreCollection<Strain>;
+    strains: Observable<Strain[]>;
 
     constructor(
         public modalController: ModalController,
@@ -35,6 +38,9 @@ export class GrowCreatePage implements OnInit {
     ) {
         this.itemsCollection = afs.collection<Item>('items');
         this.items = this.itemsCollection.valueChanges();
+        // strains
+        this.strainsCollection = afs.collection<Strain>('items/CNMckmX9s2NJzjAzh0Kp/strains');
+        this.strains = this.strainsCollection.valueChanges();
     }
 
     async presentModal() {
