@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ModalController} from '@ionic/angular';
 import {StrainDataService} from './strain-data.service';
-import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
+import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
 
 export interface Item {
@@ -26,7 +26,6 @@ export class SearchStrainPage implements OnInit {
 
     public searchTerm = '';
     strains;
-    objectKeys = Object.keys;
 
     constructor(
         public modalController: ModalController,
@@ -46,13 +45,15 @@ export class SearchStrainPage implements OnInit {
     }
 
     search(searchTerm) {
-        this.strainDataService.searchStrains(searchTerm).subscribe(
-            res => {
-                this.strains = res;
-            },
-            err => console.error(err),
-            () => console.log('done loading strains')
-        );
+        if (searchTerm.length >= 3) {
+            this.strainDataService.searchStrains(searchTerm).subscribe(
+                res => {
+                    this.strains = res;
+                },
+                err => console.error(err),
+                () => console.log('done loading strains')
+            );
+        }
     }
 
     ngOnInit() {

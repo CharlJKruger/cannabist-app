@@ -9,18 +9,18 @@
 
 <ion-content>
 
-    <ion-searchbar [(ngModel)]="searchTerm" (ngModelChange)="search(searchTerm)" placeholder="Search (3 or more characters)"></ion-searchbar>
+    <ion-searchbar [(ngModel)]="searchTerm" (ngModelChange)="search(searchTerm)"
+                   placeholder="Search (3 or more characters)"></ion-searchbar>
 
-    <ion-list>
+    <ion-list *ngIf="strains">
 
         <ion-item *ngFor="let strain of strains.strains | keyvalue" (click)="addStrain(strain)">
-<!--            <ion-avatar slot="start">-->
-<!--                <img src="{{strain['image-1']}}">-->
-<!--            </ion-avatar>-->
+            <ion-avatar slot="start">
+                <img src="https://en.seedfinder.eu/pics/01seeds/{{strain.value.brid}}/{{strain.value.brid}}_-_{{strain.value.id}}_thumb.jpg">
+            </ion-avatar>
             <ion-label>
                 <h2>{{strain.value.name}}</h2>
                 <h3>{{strain.value.brname}}</h3>
-<!--                <p>{{strain|json}}</p>-->
             </ion-label>
         </ion-item>
 

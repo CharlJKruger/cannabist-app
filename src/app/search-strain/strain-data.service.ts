@@ -10,13 +10,13 @@ export class StrainDataService {
     }
 
     public searchStrains(searchTerm) {
-        if (searchTerm.length >= 3) {
+        const encodedSearchTerm = encodeURI(searchTerm);
+        const url = 'https://en.seedfinder.eu/api/json/search.json?q=' + encodedSearchTerm + '&ac=565293a8f8dc82645900bc738815d758';
+        return this.http.get(url);
+    }
 
-            const encodedSearchTerm = encodeURI(searchTerm);
-            const url = 'https://en.seedfinder.eu/api/json/search.json?q=' + encodedSearchTerm + '&ac=565293a8f8dc82645900bc738815d758';
-            return this.http.get(url);
-        } else {
-            return;
-        }
+    public getStrainDetail(strain) {
+        const url = 'https://en.seedfinder.eu/api/json/strain.json?br=' + strain.value.brid + '&str=' + strain.value.id;
+        return this.http.get(url);
     }
 }
