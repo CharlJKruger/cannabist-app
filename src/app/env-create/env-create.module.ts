@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { EnvCreatePage } from './env-create.page';
+import {OutdoorComponent} from './outdoor/outdoor.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [EnvCreatePage]
+    declarations: [EnvCreatePage, OutdoorComponent]
 })
 export class EnvCreatePageModule {}

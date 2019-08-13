@@ -40,6 +40,7 @@
           <ion-select-option value="led">LED</ion-select-option>
           <ion-select-option value="hps">HPS</ion-select-option>
           <ion-select-option value="mh">MH</ion-select-option>
+          <ion-select-option value="cfl">CFL</ion-select-option>
         </ion-select>
       </ion-item>
 
@@ -71,6 +72,10 @@
 
     </ion-list>
 
+  </div>
+
+  <div *ngIf="indoorOrOutdoor === 'outdoor'">
+    <app-outdoor></app-outdoor>
   </div>
 
 </ion-content>

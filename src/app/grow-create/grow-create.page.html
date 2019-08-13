@@ -1,6 +1,6 @@
 <ion-header>
     <ion-toolbar color="light">
-        <ion-title>Start a grow log</ion-title>
+        <ion-title>Start a Grow Journals</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -33,9 +33,11 @@
 
     </ion-list>
 
-    <ion-list-header>
-        <ion-label>CANNABIS STRAIN/S</ion-label>
-    </ion-list-header>
+    <ion-item-divider>
+        <ion-label>
+            CANNABIS STRAIN/S
+        </ion-label>
+    </ion-item-divider>
 
     <ion-item *ngIf="strains != null">
         <ion-label>No strains yet, <a (click)="presentModal()">add one</a></ion-label>
