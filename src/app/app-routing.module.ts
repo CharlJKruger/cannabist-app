@@ -8,7 +8,8 @@ const routes: Routes = [
   },
   { path: 'grow-create', loadChildren: './grow-create/grow-create.module#GrowCreatePageModule' },
   { path: 'search-strain', loadChildren: './search-strain/search-strain.module#SearchStrainPageModule' },
-  { path: 'env-create', loadChildren: './env-create/env-create.module#EnvCreatePageModule' }
+  { path: 'env-create', loadChildren: './env-create/env-create.module#EnvCreatePageModule' },  { path: 'sign-in', loadChildren: './sign-in/sign-in.module#SignInPageModule' }
+
 
 ];
 @NgModule({

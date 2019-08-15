@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>sign-in</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <firebase-ui
+          (signInSuccessWithAuthResult)="signInSuccessCallback($event)"
+          (signInFailure)="signInErrorCallback($event)"></firebase-ui>
+
+</ion-content>
