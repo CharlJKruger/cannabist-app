@@ -7,3 +7,4 @@ https://firebase.google.com/docs/auth/web/cordova
 https://github.com/firebase/firebaseui-web#cordova-setup
 
 https://www.npmjs.com/package/firebaseui-angular
+m
